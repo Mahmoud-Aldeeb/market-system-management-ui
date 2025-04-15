@@ -1,0 +1,38 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React from "react";
+import "@/app/styles/customStyle.scss";
+
+interface InputProps {
+  id?: string;
+  name?: string;
+  list?: string;
+  placeholder?: string;
+  type: string;
+  onchange?: any;
+  onclick?: any;
+}
+
+export default function CustomInput({
+  id,
+  name,
+  list,
+  placeholder,
+  type,
+  onchange,
+  onclick,
+}: InputProps) {
+  return (
+    <div>
+      <input
+        className="custom-input"
+        id={id}
+        name={name}
+        list={list}
+        type={type}
+        placeholder={placeholder}
+        onClick={onclick}
+        onChange={onchange}
+      />
+    </div>
+  );
+}
