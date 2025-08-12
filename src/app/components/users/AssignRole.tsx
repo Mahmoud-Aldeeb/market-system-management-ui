@@ -8,7 +8,7 @@ interface AssignRoleProps {
 
 export default function AssignRole({ value, onChange }: AssignRoleProps) {
   return (
-    <div>
+    <div className="assign-role">
       <div className="assign-page">
         <CustomInput
           list="pagename"

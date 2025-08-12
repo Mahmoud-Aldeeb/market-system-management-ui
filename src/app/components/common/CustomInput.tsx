@@ -10,6 +10,8 @@ interface InputProps {
   type: string;
   onchange?: any;
   onclick?: any;
+  value?: any;
+  accept?: string;
 }
 
 export default function CustomInput({
@@ -20,10 +22,15 @@ export default function CustomInput({
   type,
   onchange,
   onclick,
+  value,
+  accept,
 }: InputProps) {
   return (
     <div>
       <input
+        autoComplete="off"
+        autoCorrect="off"
+        autoSave="off"
         className="custom-input"
         id={id}
         name={name}
@@ -32,6 +39,8 @@ export default function CustomInput({
         placeholder={placeholder}
         onClick={onclick}
         onChange={onchange}
+        value={value}
+        accept={accept}
       />
     </div>
   );

@@ -1,15 +1,60 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import Link from "next/link";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import UserDetails from "./UserDetails";
+import UserDataContext from "@/app/context/userdata";
+import { useRouter } from "next/navigation";
+import axios from "axios";
 
 export default function SideNav() {
   const [activeTab, setActiveTab] = useState<string | null>(null);
+  const [nav_tab, set_Nav_tab] = useState([]);
+  const [nav_sub_tab, set_Nav_sub_tab] = useState([]);
   const sideNavRef = useRef<HTMLDivElement>(null);
-
+  const { userData, setUserData }: any = useContext(UserDataContext);
+  const router = useRouter();
   const toggleTab = (tabName: string) => {
     setActiveTab((prev) => (prev === tabName ? null : tabName));
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      axios
+        .get("http://localhost:8090/users/verify_token", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          if (res.data.success === false) {
+            localStorage.removeItem("token");
+            router.push("/");
+          }
+          setUserData(res.data.user);
+          // هنا ممكن تضيف منطق للتعامل مع البيانات، زي تحديث state
+        })
+        .catch((err) => {
+          console.log(err);
+          router.push("/");
+          localStorage.removeItem("token");
+          // هنا ممكن تضيف منطق للتعامل مع الخطأ، زي إظهار رسالة لليوزر
+        });
+    } else {
+      router.push("/");
+      // ممكن هنا تعمل redirect لصفحة تسجيل الدخول لو مفيش token
+    }
+
+    axios.get("http://localhost:8090/nav/nav-tab").then((res) => {
+      console.log(res.data);
+      set_Nav_tab(res.data.nav_tab);
+    });
+    axios.get("http://localhost:8090/nav/nav-sub-tab").then((res) => {
+      console.log(res.data);
+      set_Nav_sub_tab(res.data.nav_sub_tab);
+    });
+  }, []);
 
   const handleClickOutside = (event: MouseEvent) => {
     if (
@@ -31,40 +76,90 @@ export default function SideNav() {
     <aside ref={sideNavRef}>
       <section className="user-details">
         <UserDetails
-          pic={"/defualt pic.jpg"}
-          username={"User name"}
-          role={"Admin"}
+          pic={`http://localhost:8090${userData.pic}`}
+          username={userData.username}
+          role={userData.role}
+          LoginTime={userData.token_created_date}
+          dep={userData.dep}
+          exp_token={userData.token_expiry_date}
+          branchName={userData.branch_name}
         />
       </section>
       <nav className="side-nav">
         <section className="navigation">
           <ul>
-            {/* Suppliers */}
-            <li>
-              <button
-                className={`nav-tab ${
-                  activeTab === "suppliers" ? "active" : ""
-                }`}
-                onClick={() => toggleTab("suppliers")}
-              >
-                Suppliers
-              </button>
-            </li>
-            <ul
-              className={`sub-nav ${activeTab === "suppliers" ? "show" : ""}`}
-            >
-              <li>
+            {nav_tab.map((tab: any) => (
+              <li key={tab.tab_id}>
+                <button
+                  className={`nav-tab ${
+                    activeTab === tab.tab_name ? "active" : ""
+                  }`}
+                  onClick={() => toggleTab(tab.tab_name)}
+                >
+                  {tab.tab_name}
+                </button>
+                {activeTab === tab.tab_name && (
+                  <div className="sub-nav show">
+                    {nav_sub_tab
+                      .filter(
+                        (sub_tab: any) => sub_tab.tab_name === tab.tab_name
+                      )
+                      .map((sub_tab: any) => (
+                        <p key={sub_tab.id}>
+                          <Link className="sub-nav-tab" href={sub_tab.href}>
+                            {sub_tab.name}
+                          </Link>
+                        </p>
+                      ))}
+                  </div>
+                )}
+              </li>
+            ))}
+
+            {/* {userData.role === "Super Admin" && userData.dep === "IT" && ( */}
+
+            {/* <li>
                 <Link className="sub-nav-tab" href="/dashboard/suppliers">
                   Create Supplier
                 </Link>
-                <Link className="sub-nav-tab" href="">
+                <Link
+                  className="sub-nav-tab"
+                  href="/dashboard/suppliers/allsupplier"
+                >
                   All Suppliers
                 </Link>
+              </li> */}
+            {/* )} */}
+
+            {/* Warehouses */}
+            {/* <li>
+              <button
+                className={`nav-tab ${
+                  activeTab === "warehouses" ? "active" : ""
+                }`}
+                onClick={() => toggleTab("warehouses")}
+              >
+                Warehouses
+              </button>
+            </li> */}
+            {/* <ul
+              className={`sub-nav ${activeTab === "warehouses" ? "show" : ""}`}
+            >
+              <li>
+                <Link className="sub-nav-tab" href="/dashboard/warehouses">
+                  Create Warehouse
+                </Link>
+                <Link
+                  className="sub-nav-tab"
+                  href="/dashboard/warehouses/allwarehouse"
+                >
+                  All Warehouse
+                </Link>
               </li>
-            </ul>
+            </ul> */}
 
             {/* Items */}
-            <li>
+            {/* <li>
               <button
                 className={`nav-tab ${activeTab === "items" ? "active" : ""}`}
                 onClick={() => toggleTab("items")}
@@ -74,17 +169,17 @@ export default function SideNav() {
             </li>
             <ul className={`sub-nav ${activeTab === "items" ? "show" : ""}`}>
               <li>
-                <Link className="sub-nav-tab" href="">
+                <Link className="sub-nav-tab" href="/dashboard/items">
                   Create Item
                 </Link>
                 <Link className="sub-nav-tab" href="">
                   All Items
                 </Link>
               </li>
-            </ul>
+            </ul> */}
 
             {/* Inventory */}
-            <li>
+            {/* <li>
               <button
                 className={`nav-tab ${
                   activeTab === "inventory" ? "active" : ""
@@ -105,10 +200,10 @@ export default function SideNav() {
                   All Inventory
                 </Link>
               </li>
-            </ul>
+            </ul> */}
 
             {/* Customers */}
-            <li>
+            {/* <li>
               <button
                 className={`nav-tab ${
                   activeTab === "customers" ? "active" : ""
@@ -129,10 +224,10 @@ export default function SideNav() {
                   All Customers
                 </Link>
               </li>
-            </ul>
+            </ul> */}
 
             {/* Invoice */}
-            <li>
+            {/* <li>
               <button
                 className={`nav-tab ${activeTab === "invoice" ? "active" : ""}`}
                 onClick={() => toggleTab("invoice")}
@@ -152,10 +247,10 @@ export default function SideNav() {
                   All Invoices
                 </Link>
               </li>
-            </ul>
+            </ul> */}
 
             {/* Finance */}
-            <li>
+            {/* <li>
               <button
                 className={`nav-tab ${activeTab === "finance" ? "active" : ""}`}
                 onClick={() => toggleTab("finance")}
@@ -175,44 +270,53 @@ export default function SideNav() {
                   Treasury
                 </Link>
               </li>
-            </ul>
+            </ul> */}
 
             {/* Reports */}
-            <li>
+            {/* <li>
               <Link className="nav-tab" href="">
                 Reports
               </Link>
-            </li>
+            </li> */}
 
             {/* Employees */}
-            <li>
+            {/* <li>
               <Link className="nav-tab" href="">
                 Employees
               </Link>
-            </li>
+            </li> */}
 
             {/* Users */}
-            <li>
+            {/* <li>
               <button
                 className={`nav-tab ${activeTab === "users" ? "active" : ""}`}
                 onClick={() => toggleTab("users")}
               >
                 Users
               </button>
-            </li>
-            <ul className={`sub-nav ${activeTab === "users" ? "show" : ""}`}>
+            </li> */}
+            {/* <ul className={`sub-nav ${activeTab === "users" ? "show" : ""}`}>
               <li>
                 <Link className="sub-nav-tab" href="/dashboard/users/role">
                   Create Role
                 </Link>
+                <Link
+                  className="sub-nav-tab"
+                  href="/dashboard/users/department"
+                >
+                  Create Department
+                </Link>
                 <Link className="sub-nav-tab" href="/dashboard/users">
                   Create User
                 </Link>
-                <Link className="sub-nav-tab" href="">
+                <Link className="sub-nav-tab" href="/dashboard/users/allusers">
                   All Users
                 </Link>
+                <Link className="sub-nav-tab" href="/dashboard/sessions">
+                  Sessions
+                </Link>
               </li>
-            </ul>
+            </ul> */}
           </ul>
         </section>
       </nav>

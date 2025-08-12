@@ -1,22 +1,62 @@
 $main-color: indigo;
 $background-color: white;
-$border-color: #ccc;
-$components-color: #cfcfcf;
-
-*{
-    padding:0 ;
-    margin: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-    user-select: none;
+$border-color: #cfcfcf;
+$components-color: #dbdbdb;
+$text-black: black;
+$green: rgb(2, 90, 49);
+$red: rgb(156, 18, 0);
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  user-select: none;
 }
 
-body{
-    background-color: $background-color;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+body {
+  background-color: $background-color;
+  font-family: sans-serif, Tahoma, Geneva, Verdana;
 }
 
-.header{
-    color: $main-color;
-    font-size: 2rem;
+.homepage {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  color: $main-color;
+  font-size: 2rem;
+}
+
+// custom style
+
+.notfi {
+  position: fixed;
+  top: 60px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.555);
+  backdrop-filter: blur(5px);
+  color: white;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  min-width: 300px;
+  h1 {
+    border-bottom: 1px solid white;
+    padding-inline: 1.2rem;
+    padding-block: 0.5rem;
+  }
+  p {
+    padding: 1.2rem;
+  }
+}
+
+.error-message {
+  color: red;
+  text-align: left;
+  padding-left: 0.5rem;
+  font-size: 0.7rem;
 }

@@ -1,0 +1,62 @@
+@use "./main.scss" as *;
+.all-supplier {
+  width: 100%;
+  height: calc(100vh - 60px);
+  display: flex;
+  padding: 2rem;
+  gap: 20px;
+  flex-wrap: wrap;
+  .supplier-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 280px;
+    // max-width: 350px;
+    border: 2px solid $border-color;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    height: fit-content;
+    background-color: $components-color;
+
+    p:nth-child(1) {
+      font-weight: bold;
+      font-size: 1.4rem;
+    }
+    p:nth-child(2) {
+      font-size: 1rem;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      .link {
+        text-decoration: none;
+      }
+      button {
+        background-color: $background-color;
+        color: $main-color;
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        font-weight: bold;
+        font-size: 18px;
+        border: 2px solid $main-color;
+        border-radius: 0.5rem;
+        &:hover {
+          background-color: $main-color;
+          color: $background-color;
+        }
+      }
+
+      :nth-child(2) {
+        background-color: $background-color;
+        color: red;
+        border-color: red;
+        &:hover {
+          background-color: red;
+          color: $background-color;
+        }
+      }
+    }
+  }
+}

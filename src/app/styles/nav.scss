@@ -8,18 +8,39 @@
   align-items: center;
   padding: 0.5rem 1rem;
 
-  button {
-    padding: 0.5rem 1rem;
-    color: red;
-    background-color: $components-color;
-    border: 1px solid red;
-    cursor: pointer;
-    font-size: 1.2rem;
-    border-radius: 0.5rem;
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    .logout {
+      padding: 0.5rem 1rem;
+      color: red;
+      background-color: $components-color;
+      border: 1px solid red;
+      cursor: pointer;
+      font-size: 1.2rem;
+      border-radius: 0.5rem;
+      &:hover {
+        background-color: red;
+        color: $background-color;
+      }
+    }
 
-    &:hover {
-      background-color: red;
-      color: $background-color;
+    .link {
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      color: $main-color;
+      width: 100%;
+      height: 100%;
+      background-color: $components-color;
+      border: 1px solid $main-color;
+      cursor: pointer;
+      font-size: 1.2rem;
+      border-radius: 0.5rem;
+      &:hover {
+        background-color: $main-color;
+        color: $background-color;
+      }
     }
   }
 }
@@ -35,7 +56,7 @@
 
 aside {
   background-color: $components-color;
-  width: 250px;
+  width: 280px;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -58,10 +79,12 @@ aside {
     h1 {
       font-size: 1.5rem;
       padding-top: 1rem;
+      color: $text-black;
     }
 
     p {
       font-size: 1.2rem;
+      color: $text-black;
     }
   }
 }
@@ -84,8 +107,8 @@ aside {
 
       li {
         .nav-tab {
-          background-color: #c1c1c1;
-          color: black;
+          background-color: $border-color;
+          color: $text-black;
           display: block;
           width: 100%;
           padding: 0.5rem 1rem;
@@ -116,7 +139,7 @@ aside {
         padding: 0.5rem 1rem;
         display: none;
 
-        li {
+        p {
           display: flex;
           flex-direction: column;
           gap: 0.25rem;

@@ -1,0 +1,52 @@
+@use "./main.scss" as *;
+
+.create-role {
+  padding-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 60px);
+  form {
+    width: 360px;
+    .role-div {
+      width: 100%;
+      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      input.custom-input {
+        width: 360px;
+      }
+      .select {
+        width: 100%;
+        font-size: 1.2rem;
+        outline: none;
+        border: 1px solid $border-color;
+        border-radius: 0.5rem;
+        &:focus {
+          color: $main-color;
+          border-color: $main-color;
+        }
+      }
+      .save {
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        border: 2px solid $main-color;
+        color: $main-color;
+        outline: none;
+        font-size: 1.2rem;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      .save:hover {
+        background-color: $main-color;
+        color: $background-color;
+      }
+      .add:hover {
+        background-color: green;
+        color: $background-color;
+      }
+    }
+  }
+}
