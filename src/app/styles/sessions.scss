@@ -1,0 +1,53 @@
+.sessions-page {
+  width: 100%;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  .session-headar {
+    color: red;
+    margin-bottom: 30px;
+  }
+  table {
+    width: 100%;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 6px;
+    thead tr {
+      text-align: center;
+      th {
+        width: calc(100% / 5);
+        padding: 0.5rem 1rem;
+        font-weight: bold;
+        background-color: black;
+        color: white;
+      }
+    }
+    tbody {
+      tr {
+        text-align: center;
+        &:nth-child(even) {
+          background-color: lightblue;
+        }
+        &:hover {
+          background-color: blue;
+          color: white;
+        }
+        td {
+          width: calc(100% / 5);
+          padding: 0.25rem 0.5rem;
+          button {
+            padding: 0.25rem 0.5rem;
+            color: red;
+            border: 1px solid red;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            &:hover {
+              background-color: red;
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+}

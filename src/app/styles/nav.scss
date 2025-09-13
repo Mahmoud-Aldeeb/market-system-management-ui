@@ -1,0 +1,170 @@
+@use "./main.scss" as *;
+
+.top-nav {
+  background-color: $components-color;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    .logout {
+      padding: 0.5rem 1rem;
+      color: red;
+      background-color: $components-color;
+      border: 1px solid red;
+      cursor: pointer;
+      font-size: 1.2rem;
+      border-radius: 0.5rem;
+      &:hover {
+        background-color: red;
+        color: $background-color;
+      }
+    }
+
+    .link {
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      color: $main-color;
+      width: 100%;
+      height: 100%;
+      background-color: $components-color;
+      border: 1px solid $main-color;
+      cursor: pointer;
+      font-size: 1.2rem;
+      border-radius: 0.5rem;
+      &:hover {
+        background-color: $main-color;
+        color: $background-color;
+      }
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background-color: $components-color;
+
+  &-thumb {
+    background-color: $main-color;
+  }
+}
+
+aside {
+  background-color: $components-color;
+  width: 280px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 1rem;
+
+  .user-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+
+    img {
+      width: 100px;
+      border: 2px solid $main-color;
+      border-radius: 50%;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      padding-top: 1rem;
+      color: $text-black;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: $text-black;
+    }
+  }
+}
+
+.side-nav {
+  overflow-y: auto;
+  width: 100%;
+
+  .navigation {
+    height: 100%;
+    width: 100%;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      height: 100%;
+      width: 100%;
+      list-style: none;
+
+      li {
+        .nav-tab {
+          background-color: $border-color;
+          color: $text-black;
+          display: block;
+          width: 100%;
+          padding: 0.5rem 1rem;
+          margin-block: 0.5rem;
+          text-decoration: none;
+          font-size: 1.2rem;
+          border-radius: 0.5rem;
+          text-align: left;
+          border: none;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $main-color;
+            color: $background-color;
+          }
+
+          &.active {
+            background-color: $main-color;
+            color: $background-color;
+          }
+        }
+      }
+
+      .sub-nav {
+        border-radius: 0 0 0.5rem 0.5rem;
+        background-color: $main-color;
+        margin-top: -15px;
+        padding: 0.5rem 1rem;
+        display: none;
+
+        p {
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
+
+          .sub-nav-tab {
+            display: block;
+            padding: 0.25rem 0.5rem;
+            width: 100%;
+            text-decoration: none;
+            font-size: 1.2rem;
+            border-radius: 0.5rem;
+            background-color: $main-color;
+            color: $background-color;
+
+            &:hover {
+              background-color: $background-color;
+              color: $main-color;
+            }
+          }
+        }
+
+        &.show {
+          display: block;
+        }
+      }
+    }
+  }
+}

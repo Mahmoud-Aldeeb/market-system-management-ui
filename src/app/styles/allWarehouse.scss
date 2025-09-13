@@ -1,0 +1,68 @@
+@use "./main.scss" as *;
+
+.all-warehouse {
+  width: 100%;
+  height: calc(100vh - 60px);
+  display: flex;
+  padding: 2rem;
+  gap: 20px;
+  flex-wrap: wrap;
+  .warehouse-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 300px;
+    max-width: 350px;
+    border: 2px solid $border-color;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    height: fit-content;
+    background-color: $components-color;
+
+    p:nth-child(1) {
+      font-weight: bold;
+      font-size: 1.4rem;
+    }
+    p:nth-child(2),
+    p:nth-child(3) {
+      font-size: 1rem;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .link {
+        text-decoration: none;
+        .edit {
+          background-color: $background-color;
+          color: $main-color;
+          cursor: pointer;
+          padding: 0.5rem 1rem;
+          font-weight: bold;
+          font-size: 18px;
+          border: 2px solid $main-color;
+          border-radius: 0.5rem;
+          &:hover {
+            background-color: $main-color;
+            color: $background-color;
+          }
+        }
+      }
+      .delete-btn {
+        background-color: $background-color;
+        color: red;
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        font-weight: bold;
+        font-size: 18px;
+        border: 2px solid red;
+        border-radius: 0.5rem;
+        &:hover {
+          background-color: red;
+          color: $background-color;
+        }
+      }
+    }
+  }
+}

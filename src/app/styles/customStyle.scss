@@ -1,0 +1,13 @@
+@use "./main.scss" as *;
+.custom-input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    outline: none;
+    border: 2px solid $border-color;
+    border-radius: 0.5rem;
+    &:focus{
+        color: $main-color;
+        border-color: $main-color;
+    }
+}

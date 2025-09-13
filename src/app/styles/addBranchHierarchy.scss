@@ -1,0 +1,85 @@
+@use "./main.scss" as *;
+.add-branch-hierarchy {
+  width: 100%;
+  height: calc(100vh - 60px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .form {
+    padding-inline: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    .group {
+      width: 400px;
+      section {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        label {
+          font-size: 0.8rem;
+        }
+        select {
+          width: 100%;
+          padding: 0.5rem 1rem;
+          font-size: 1.2rem;
+          outline: none;
+          border: 2px solid $border-color;
+          border-radius: 0.5rem;
+          &:focus {
+            color: $main-color;
+            border-color: $main-color;
+          }
+        }
+      }
+    }
+
+    table {
+      width: 100%;
+      background-color: white;
+      border: 2px solid black;
+      border-radius: 6px;
+      thead tr {
+        text-align: center;
+        th {
+          width: calc(100% / 5);
+          padding: 0.5rem 1rem;
+          font-weight: bold;
+          background-color: black;
+          color: white;
+        }
+      }
+      tbody {
+        tr {
+          text-align: center;
+          td {
+            padding: 0.5rem 1rem;
+            border-bottom: 2px solid black;
+          }
+        }
+        tr:nth-child(2) {
+          td {
+            border: none;
+          }
+        }
+      }
+    }
+    button {
+      background-color: $background-color;
+      color: $main-color;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      font-weight: bold;
+      font-size: 18px;
+      border: 2px solid $main-color;
+      border-radius: 0.5rem;
+      &:hover {
+        background-color: $main-color;
+        color: $background-color;
+      }
+    }
+  }
+}
