@@ -10,11 +10,18 @@ import { toast } from "react-toastify";
 export default function AllSubNavTab() {
   const { setPageName }: any = useContext(PageNameContext);
   const [data, setData] = useState([]);
+<<<<<<< HEAD
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   function fetchData() {
     axios
       .get(`${apiUrl}/nav/nav-sub-tab`)
+=======
+
+  function fetchData() {
+    axios
+      .get("http://localhost:8090/nav/nav-sub-tab")
+>>>>>>> upstream/main
       .then((response) => {
         setData(response.data.nav_sub_tab);
       })
@@ -24,7 +31,11 @@ export default function AllSubNavTab() {
   }
   function handelDelete(id: number) {
     axios
+<<<<<<< HEAD
       .delete(`${apiUrl}/nav/nav-sub-tab/${id}`)
+=======
+      .delete(`http://localhost:8090/nav/nav-sub-tab/${id}`)
+>>>>>>> upstream/main
       .then((res) => {
         toast.success(res.data.message);
         fetchData();

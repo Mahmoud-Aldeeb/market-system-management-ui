@@ -9,7 +9,10 @@ export default function Sessions() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const { setPageName }: any = useContext(PageNameContext);
+<<<<<<< HEAD
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+=======
+>>>>>>> upstream/main
   useEffect(() => {
     setPageName("Users Sessions");
   }, []);
@@ -24,7 +27,11 @@ export default function Sessions() {
     }
 
     axios
+<<<<<<< HEAD
       .get(`${apiUrl}/users/get_active_sessions`, {
+=======
+      .get("http://localhost:8090/users/get_active_sessions", {
+>>>>>>> upstream/main
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -50,12 +57,24 @@ export default function Sessions() {
 
     const token = localStorage.getItem("token");
     try {
+<<<<<<< HEAD
       const res = await axios.delete(`${apiUrl}/users/revoke_session`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
         data: { username },
       });
+=======
+      const res = await axios.delete(
+        "http://localhost:8090/users/revoke_session",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+          data: { username },
+        }
+      );
+>>>>>>> upstream/main
 
       if (res.data.success) {
         // Remove the session from the state

@@ -23,12 +23,19 @@ export default function EditWarehouse() {
   const { warehouse } = useParams();
   const [warehouseData, setWarehouseData] = useState<warehouseType>({});
   const { setPageName }: any = useContext(PageNameContext);
+<<<<<<< HEAD
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+=======
+>>>>>>> upstream/main
 
   useEffect(() => {
     setPageName("Edit Warehouse");
     axios
+<<<<<<< HEAD
       .get(`${apiUrl}/warehouses/warehouse/${warehouse}`, {
+=======
+      .get(`http://localhost:8090/warehouses/warehouse/${warehouse}`, {
+>>>>>>> upstream/main
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -41,11 +48,23 @@ export default function EditWarehouse() {
 
   function handleEditWarehouse(values: any) {
     axios
+<<<<<<< HEAD
       .put(`${apiUrl}/warehouses/update_warehouse/${warehouse}`, values, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       })
+=======
+      .put(
+        `http://localhost:8090/warehouses/update_warehouse/${warehouse}`,
+        values,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      )
+>>>>>>> upstream/main
       .then((res) => {
         toast.success(res.data.message);
         router.push("/dashboard/warehouses/allwarehouse");

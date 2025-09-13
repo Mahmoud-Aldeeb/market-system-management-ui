@@ -11,14 +11,22 @@ import ErrorMessageP from "../common/ErrorMessage";
 import * as Yup from "yup";
 export default function CreateSupplier() {
   const { setPageName }: any = useContext(PageNameContext);
+<<<<<<< HEAD
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+=======
+
+>>>>>>> upstream/main
   useEffect(() => {
     setPageName("Create Supplier");
   }, [setPageName]);
 
   function handelSubmit(values: any) {
     axios
+<<<<<<< HEAD
       .post(`${apiUrl}/supplier/add_supplier`, values, {
+=======
+      .post("http://localhost:8090/supplier/add_supplier", values, {
+>>>>>>> upstream/main
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

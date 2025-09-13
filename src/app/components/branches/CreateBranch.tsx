@@ -9,7 +9,10 @@ import * as Yup from "yup";
 import axios from "axios";
 import { toast } from "react-toastify";
 import ErrorMessageP from "../common/ErrorMessage";
+<<<<<<< HEAD
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+=======
+>>>>>>> upstream/main
 export default function CreateBranch() {
   const { setPageName }: any = useContext(PageNameContext);
   useEffect(() => {
@@ -28,7 +31,11 @@ export default function CreateBranch() {
           const token = localStorage.getItem("token");
           axios
             .post(
+<<<<<<< HEAD
               `${apiUrl}/branch/branches`,
+=======
+              "http://localhost:8090/branch/branches",
+>>>>>>> upstream/main
               {
                 branch_name: values.branch_name,
                 location: values.location,

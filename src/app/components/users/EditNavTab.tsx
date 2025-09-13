@@ -20,13 +20,21 @@ export default function EditNavTab() {
   const router = useRouter();
   const { setPageName }: any = useContext(PageNameContext);
   const [navTab, setNavTab] = useState<NavTab>({ tab_id: 0, tab_name: "" });
+<<<<<<< HEAD
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+=======
+
+>>>>>>> upstream/main
   useEffect(() => {
     setPageName("Edit Nav Tab");
 
     if (navtab) {
       axios
+<<<<<<< HEAD
         .get(`${apiUrl}/nav/nav-tab/${navtab}`, {
+=======
+        .get(`http://localhost:8090/nav/nav-tab/${navtab}`, {
+>>>>>>> upstream/main
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -43,7 +51,11 @@ export default function EditNavTab() {
 
   const handleSave = (values: any) => {
     axios
+<<<<<<< HEAD
       .put(`${apiUrl}/nav/nav-tab/${navTab.tab_id}`, values, {
+=======
+      .put(`http://localhost:8090/nav/nav-tab/${navTab.tab_id}`, values, {
+>>>>>>> upstream/main
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

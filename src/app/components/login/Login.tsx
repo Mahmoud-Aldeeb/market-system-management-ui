@@ -17,14 +17,21 @@ export default function Login() {
   const [branches, setBranches] = useState<any[]>([]);
   const [selectedBranch, setSelectedBranch] = useState("");
   const [userData, setUserData] = useState<any>(null);
+<<<<<<< HEAD
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+=======
+>>>>>>> upstream/main
 
   // التحقق من التوكن لو موجود
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       axios
+<<<<<<< HEAD
         .get(`${apiUrl}/users/verify_token`, {
+=======
+        .get("http://localhost:8090/users/verify_token", {
+>>>>>>> upstream/main
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -49,7 +56,11 @@ export default function Login() {
     if (!selectedBranch) return toast.error("Please select a branch");
 
     axios
+<<<<<<< HEAD
       .post(`${apiUrl}/users/login_step2`, {
+=======
+      .post("http://localhost:8090/users/login_step2", {
+>>>>>>> upstream/main
         userId: userData.userId,
         branchId: selectedBranch,
         username: userData.username,
@@ -83,7 +94,11 @@ export default function Login() {
           })}
           onSubmit={(values) => {
             axios
+<<<<<<< HEAD
               .post(`${apiUrl}/users/login_step1`, values)
+=======
+              .post("http://localhost:8090/users/login_step1", values)
+>>>>>>> upstream/main
               .then((res) => {
                 if (res.data.success && res.data.branches.length > 0) {
                   setBranches(res.data.branches);
