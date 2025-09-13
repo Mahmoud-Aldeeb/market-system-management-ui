@@ -18,10 +18,7 @@ const permissions = [
   { label: "Update", value: "update" },
   { label: "Delete", value: "delete" },
 ];
-<<<<<<< HEAD
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-=======
->>>>>>> upstream/main
 
 export default function CreateRole() {
   const { setPageName }: any = useContext(PageNameContext);
@@ -33,11 +30,7 @@ export default function CreateRole() {
   const handleSubmit = (values: any) => {
     const token = localStorage.getItem("token");
     axios
-<<<<<<< HEAD
       .post(`${apiUrl}/users/create_role`, values, {
-=======
-      .post("http://localhost:8090/users/create_role", values, {
->>>>>>> upstream/main
         headers: {
           Authorization: `Bearer ${token}`,
         },

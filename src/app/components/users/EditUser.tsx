@@ -47,17 +47,11 @@ export default function EditUser() {
   });
   const { user } = useParams();
 
-<<<<<<< HEAD
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   useEffect(() => {
     axios
       .get(`${apiUrl}/users/user/${user}`, {
-=======
-  useEffect(() => {
-    axios
-      .get(`http://localhost:8090/users/user/${user}`, {
->>>>>>> upstream/main
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -65,31 +59,19 @@ export default function EditUser() {
       .then((res) => setUserData(res.data.user))
       .catch((err) => console.log(err));
     axios
-<<<<<<< HEAD
       .get<{ departments: Department[] }>(`${apiUrl}/users/get_dep`)
-=======
-      .get<{ departments: Department[] }>("http://localhost:8090/users/get_dep")
->>>>>>> upstream/main
       .then((res) => setDepartment(res.data.departments))
       .catch((err) => console.log(err));
 
     axios
-<<<<<<< HEAD
       .get<{ roles: Role[] }>(`${apiUrl}/users/get_role`)
-=======
-      .get<{ roles: Role[] }>("http://localhost:8090/users/get_role")
->>>>>>> upstream/main
       .then((res) => setRole(res.data.roles))
       .catch((err) => console.log(err));
   }, []);
 
   function handelEditUser(values: any) {
     axios
-<<<<<<< HEAD
       .put(`${apiUrl}/users/edit_user/${user}`, values, {
-=======
-      .put(`http://localhost:8090/users/edit_user/${user}`, values, {
->>>>>>> upstream/main
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -110,11 +92,7 @@ export default function EditUser() {
     e.preventDefault();
     axios
       .put(
-<<<<<<< HEAD
         `${apiUrl}/users/reset_password/${user}`,
-=======
-        `http://localhost:8090/users/reset_password/${user}`,
->>>>>>> upstream/main
         {},
         {
           headers: {

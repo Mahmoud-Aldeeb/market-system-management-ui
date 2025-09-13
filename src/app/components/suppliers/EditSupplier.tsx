@@ -12,10 +12,7 @@ import ErrorMessageP from "../common/ErrorMessage";
 export default function EditSupplier() {
   const { supplier } = useParams();
   const router = useRouter();
-<<<<<<< HEAD
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-=======
->>>>>>> upstream/main
 
   const [supplierData, setSupplierData] = useState<{
     supplier_name: string;
@@ -25,11 +22,7 @@ export default function EditSupplier() {
   }>({ supplier_name: "", supplier_adress: "", phone: "", email: "" });
   function fetchSupplier() {
     axios
-<<<<<<< HEAD
       .get(`${apiUrl}/supplier/supplier/${supplier}`, {
-=======
-      .get(`http://localhost:8090/supplier/supplier/${supplier}`, {
->>>>>>> upstream/main
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -41,23 +34,11 @@ export default function EditSupplier() {
   }
   function handelEditSupplier(values: any) {
     axios
-<<<<<<< HEAD
       .put(`${apiUrl}/supplier/update_supplier/${supplier}`, values, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       })
-=======
-      .put(
-        `http://localhost:8090/supplier/update_supplier/${supplier}`,
-        values,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        }
-      )
->>>>>>> upstream/main
       .then((res) => {
         if (res.data.success === false) {
           toast.error(res.data.message);

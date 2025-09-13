@@ -20,18 +20,11 @@ export default function AllWareHouse() {
     dep: "",
     role: "",
   });
-<<<<<<< HEAD
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   function fetchPermission() {
     axios
       .get(`${apiUrl}/users/verify_token`, {
-=======
-
-  function fetchPermission() {
-    axios
-      .get("http://localhost:8090/users/verify_token", {
->>>>>>> upstream/main
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -44,11 +37,7 @@ export default function AllWareHouse() {
   }
   function fetchWarehouses() {
     axios
-<<<<<<< HEAD
       .get(`${apiUrl}/warehouses/warehouses`, {
-=======
-      .get("http://localhost:8090/warehouses/warehouses", {
->>>>>>> upstream/main
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -66,11 +55,7 @@ export default function AllWareHouse() {
 
   function handelDeleteWarehouse(id: any) {
     axios
-<<<<<<< HEAD
       .delete(`${apiUrl}/warehouses/delete_warehouse/${id}`, {
-=======
-      .delete(`http://localhost:8090/warehouses/delete_warehouse/${id}`, {
->>>>>>> upstream/main
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
