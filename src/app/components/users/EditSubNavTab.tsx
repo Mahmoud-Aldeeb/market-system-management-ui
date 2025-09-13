@@ -25,6 +25,15 @@ export default function EditSubNavTab() {
   });
   const [tabs_name, set_tabs_name] =
     useState<{ tab_name: string; tab_id: number }[]>();
+<<<<<<< HEAD
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  useEffect(() => {
+    setPageName("Edit Sub Nav Tab");
+    axios.get(`${apiUrl}/nav/nav-sub-tab/${subnavtab}`).then((res) => {
+      setSubNavTabData(res.data.nav_sub_tab);
+    });
+    axios.get(`${apiUrl}/nav/nav-tab`).then((res) => {
+=======
   useEffect(() => {
     setPageName("Edit Sub Nav Tab");
     axios
@@ -33,12 +42,17 @@ export default function EditSubNavTab() {
         setSubNavTabData(res.data.nav_sub_tab);
       });
     axios.get("http://localhost:8090/nav/nav-tab").then((res) => {
+>>>>>>> upstream/main
       set_tabs_name(res.data.nav_tab);
     });
   }, []);
   function handelSubmit(values: any) {
     axios
+<<<<<<< HEAD
+      .put(`${apiUrl}/nav/nav-sub-tab/${subnavtab}`, values)
+=======
       .put(`http://localhost:8090/nav/nav-sub-tab/${subnavtab}`, values)
+>>>>>>> upstream/main
       .then((res) => {
         toast.success(res.data.message);
         setTimeout(() => {

@@ -12,13 +12,21 @@ import ErrorMessageP from "../common/ErrorMessage";
 
 export default function CreateNavTab() {
   const { setPageName }: any = useContext(PageNameContext);
+<<<<<<< HEAD
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+=======
 
+>>>>>>> upstream/main
   useEffect(() => {
     setPageName("Create Nav Tab");
   }, []);
   function handelSubmit(values: any) {
     axios
+<<<<<<< HEAD
+      .post(`${apiUrl}/nav/nav-tab`, values)
+=======
       .post("http://localhost:8090/nav/nav-tab", values)
+>>>>>>> upstream/main
       .then((res) => {
         toast.success(res.data.message);
         setTimeout(() => {

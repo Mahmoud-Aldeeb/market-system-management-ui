@@ -17,12 +17,20 @@ export default function SideNav() {
   const toggleTab = (tabName: string) => {
     setActiveTab((prev) => (prev === tabName ? null : tabName));
   };
+<<<<<<< HEAD
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+=======
+>>>>>>> upstream/main
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       axios
+<<<<<<< HEAD
+        .get(`${apiUrl}/users/verify_token`, {
+=======
         .get("http://localhost:8090/users/verify_token", {
+>>>>>>> upstream/main
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -46,11 +54,19 @@ export default function SideNav() {
       // ممكن هنا تعمل redirect لصفحة تسجيل الدخول لو مفيش token
     }
 
+<<<<<<< HEAD
+    axios.get(`${apiUrl}/nav/nav-tab`).then((res) => {
+      console.log(res.data);
+      set_Nav_tab(res.data.nav_tab);
+    });
+    axios.get(`${apiUrl}/nav/nav-sub-tab`).then((res) => {
+=======
     axios.get("http://localhost:8090/nav/nav-tab").then((res) => {
       console.log(res.data);
       set_Nav_tab(res.data.nav_tab);
     });
     axios.get("http://localhost:8090/nav/nav-sub-tab").then((res) => {
+>>>>>>> upstream/main
       console.log(res.data);
       set_Nav_sub_tab(res.data.nav_sub_tab);
     });
@@ -76,7 +92,11 @@ export default function SideNav() {
     <aside ref={sideNavRef}>
       <section className="user-details">
         <UserDetails
+<<<<<<< HEAD
+          pic={`${apiUrl} ${userData.pic}`}
+=======
           pic={`http://localhost:8090${userData.pic}`}
+>>>>>>> upstream/main
           username={userData.username}
           role={userData.role}
           LoginTime={userData.token_created_date}

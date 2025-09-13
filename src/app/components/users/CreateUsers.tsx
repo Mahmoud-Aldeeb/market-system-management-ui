@@ -53,6 +53,10 @@ export default function CreateUsers() {
     role: "",
   });
   const [pic, setPic] = useState<File | null>(null);
+<<<<<<< HEAD
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+=======
+>>>>>>> upstream/main
 
   useEffect(() => {
     setPageName("Create Users");
@@ -60,12 +64,20 @@ export default function CreateUsers() {
 
   useEffect(() => {
     axios
+<<<<<<< HEAD
+      .get<{ departments: Department[] }>(`${apiUrl}/users/get_dep`)
+=======
       .get<{ departments: Department[] }>("http://localhost:8090/users/get_dep")
+>>>>>>> upstream/main
       .then((res) => setDepartment(res.data.departments))
       .catch((err) => console.log(err));
 
     axios
+<<<<<<< HEAD
+      .get<{ roles: Role[] }>(`${apiUrl}/users/get_role`)
+=======
       .get<{ roles: Role[] }>("http://localhost:8090/users/get_role")
+>>>>>>> upstream/main
       .then((res) => setRole(res.data.roles))
       .catch((err) => console.log(err));
   }, []);
@@ -95,7 +107,11 @@ export default function CreateUsers() {
 
     await axios
       .post<{ success: boolean; message: string }>(
+<<<<<<< HEAD
+        `${apiUrl}/users/create_user`,
+=======
         "http://localhost:8090/users/create_user",
+>>>>>>> upstream/main
         data
       )
       .then((res) => {
