@@ -15,10 +15,18 @@ export default function AllUsers() {
     role: "",
     dep: "",
   });
+<<<<<<< HEAD
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  function verifyUser() {
+    const token = localStorage.getItem("token");
+    axios
+      .get(`${apiUrl}/users/verify_token`, {
+=======
   function verifyUser() {
     const token = localStorage.getItem("token");
     axios
       .get("http://localhost:8090/users/verify_token", {
+>>>>>>> upstream/main
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -33,7 +41,11 @@ export default function AllUsers() {
 
   function fetchUsers() {
     axios
+<<<<<<< HEAD
+      .get(`${apiUrl}/users/all_users`)
+=======
       .get("http://localhost:8090/users/all_users")
+>>>>>>> upstream/main
       .then((res) => {
         setUsers(res.data.data);
       })
@@ -42,7 +54,11 @@ export default function AllUsers() {
   function deleteUser(username: string) {
     const token = localStorage.getItem("token");
     axios
+<<<<<<< HEAD
+      .delete(`${apiUrl}/users/delete_user/${username}`, {
+=======
       .delete(`http://localhost:8090/users/delete_user/${username}`, {
+>>>>>>> upstream/main
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res: any) => {
@@ -64,7 +80,11 @@ export default function AllUsers() {
       {users.map((user: any) => (
         <div className="user-card-view" key={user.id}>
           <UserCard
+<<<<<<< HEAD
+            pic={`${apiUrl}${user.pic}`}
+=======
             pic={`http://localhost:8090${user.pic}`}
+>>>>>>> upstream/main
             name={user.username}
             role={user.role}
             phone={user.phone}

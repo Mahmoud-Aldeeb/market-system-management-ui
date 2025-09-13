@@ -11,6 +11,10 @@ import * as Yup from "yup";
 import ErrorMessageP from "../common/ErrorMessage";
 export default function CreateWarhouse() {
   const { setPageName }: any = useContext(PageNameContext);
+<<<<<<< HEAD
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+=======
+>>>>>>> upstream/main
 
   useEffect(() => {
     setPageName("Create Warehouse");
@@ -21,7 +25,11 @@ export default function CreateWarhouse() {
     capacity: string;
   }) {
     axios
+<<<<<<< HEAD
+      .post(`${apiUrl}/warehouses/add_warehouse`, values, {
+=======
       .post("http://localhost:8090/warehouses/add_warehouse", values, {
+>>>>>>> upstream/main
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
