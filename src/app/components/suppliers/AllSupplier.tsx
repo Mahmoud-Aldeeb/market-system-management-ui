@@ -15,16 +15,10 @@ export default function AllSupplier() {
     role: "",
     dep: "",
   });
-<<<<<<< HEAD
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   function getAllSuppliers() {
     axios
       .get(`${apiUrl}/supplier/suppliers`, {
-=======
-  function getAllSuppliers() {
-    axios
-      .get("http://localhost:8090/supplier/suppliers", {
->>>>>>> upstream/main
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -38,11 +32,7 @@ export default function AllSupplier() {
   function fetchPermission() {
     const token = localStorage.getItem("token");
     axios
-<<<<<<< HEAD
       .get(`${apiUrl}/users/verify_token`, {
-=======
-      .get("http://localhost:8090/users/verify_token", {
->>>>>>> upstream/main
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -62,11 +52,7 @@ export default function AllSupplier() {
   }, []);
   function handelDelete(id: any) {
     axios
-<<<<<<< HEAD
       .delete(`${apiUrl}/supplier/delete_supplier/${id}`, {
-=======
-      .delete(`http://localhost:8090/supplier/delete_supplier/${id}`, {
->>>>>>> upstream/main
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },

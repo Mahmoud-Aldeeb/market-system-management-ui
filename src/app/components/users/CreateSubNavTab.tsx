@@ -12,31 +12,19 @@ import ErrorMessageP from "../common/ErrorMessage";
 
 export default function CreateSubNavTab() {
   const { setPageName }: any = useContext(PageNameContext);
-<<<<<<< HEAD
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-=======
-
->>>>>>> upstream/main
   const [tabs_name, set_tabs_name] =
     useState<{ tab_name: string; tab_id: number }[]>();
   useEffect(() => {
     setPageName("Create Sub Nav Tab");
-<<<<<<< HEAD
     axios.get(`${apiUrl}/nav/nav-tab`).then((res) => {
-=======
-    axios.get("http://localhost:8090/nav/nav-tab").then((res) => {
->>>>>>> upstream/main
       console.log(res.data);
       set_tabs_name(res.data.nav_tab);
     });
   }, []);
   function handelSubmit(values: any) {
     axios
-<<<<<<< HEAD
       .post(`${apiUrl}/nav/nav-sub-tab`, values)
-=======
-      .post("http://localhost:8090/nav/nav-sub-tab", values)
->>>>>>> upstream/main
       .then((res) => {
         toast.success(res.data.message);
         setTimeout(() => {

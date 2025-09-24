@@ -17,18 +17,11 @@ export default function AssignBranchUsers() {
   const [branches, setBranches] = useState([]);
   const [userBranches, setUserBranches] = useState([]);
   const debounceTimeout = useRef<NodeJS.Timeout | null>(null);
-<<<<<<< HEAD
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   function fetchUsers() {
     axios
       .get(`${apiUrl}/users/all_users`)
-=======
-
-  function fetchUsers() {
-    axios
-      .get("http://localhost:8090/users/all_users")
->>>>>>> upstream/main
       .then((res) => {
         console.log(res.data);
         setUsers(res.data.data);
@@ -39,11 +32,7 @@ export default function AssignBranchUsers() {
   function fetchBranches() {
     const token = localStorage.getItem("token");
     axios
-<<<<<<< HEAD
       .get(`${apiUrl}/branch/branches`, {
-=======
-      .get("http://localhost:8090/branch/branches", {
->>>>>>> upstream/main
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -66,11 +55,7 @@ export default function AssignBranchUsers() {
       }
       const token = localStorage.getItem("token");
       axios
-<<<<<<< HEAD
         .get(`${apiUrl}/branch/user_branches/${username}`, {
-=======
-        .get(`http://localhost:8090/branch/user_branches/${username}`, {
->>>>>>> upstream/main
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((res) => {
@@ -111,11 +96,7 @@ export default function AssignBranchUsers() {
         onSubmit={(values) => {
           const token = localStorage.getItem("token");
           axios
-<<<<<<< HEAD
             .post(`${apiUrl}/branch/user_branches`, values, {
-=======
-            .post(`http://localhost:8090/branch/user_branches`, values, {
->>>>>>> upstream/main
               headers: {
                 Authorization: `Bearer ${token}`,
               },

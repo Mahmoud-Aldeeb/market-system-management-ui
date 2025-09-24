@@ -7,19 +7,12 @@ import { useRouter } from "next/navigation";
 export default function Dashboard() {
   const { setUserData }: any = useContext(UserDataContext);
   const router = useRouter();
-<<<<<<< HEAD
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-=======
->>>>>>> upstream/main
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
       axios
-<<<<<<< HEAD
         .get(`${apiUrl}/users/verify_token`, {
-=======
-        .get("http://localhost:8090/users/verify_token", {
->>>>>>> upstream/main
           headers: {
             Authorization: `Bearer ${token}`,
           },

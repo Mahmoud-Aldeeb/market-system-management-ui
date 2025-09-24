@@ -11,11 +11,7 @@ import ErrorMessageP from "../common/ErrorMessage";
 
 export default function AddBranchHierarchy() {
   const { setPageName }: any = useContext(PageNameContext);
-<<<<<<< HEAD
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-=======
-
->>>>>>> upstream/main
   const [branches, setBranches] = useState<
     {
       branch_id: number;
@@ -37,11 +33,7 @@ export default function AddBranchHierarchy() {
   function fetchBranches() {
     const token = localStorage.getItem("token");
     axios
-<<<<<<< HEAD
       .get(`${apiUrl}/branch/branches`, {
-=======
-      .get("http://localhost:8090/branch/branches", {
->>>>>>> upstream/main
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -81,11 +73,7 @@ export default function AddBranchHierarchy() {
           const token = localStorage.getItem("token");
           axios
             .post(
-<<<<<<< HEAD
               `${apiUrl}/branch/branch_hierarchy`,
-=======
-              "http://localhost:8090/branch/branch_hierarchy",
->>>>>>> upstream/main
               {
                 parent_branch_id: values.parent_branch_id,
                 child_branch_id: values.child_branch_id,
