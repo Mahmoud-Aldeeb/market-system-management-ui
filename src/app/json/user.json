@@ -1,0 +1,13 @@
+{
+  "id": 1001,
+  "name": "adham",
+  "role": {
+    "name": "Admin",
+    "permissions": ["create", "read"]
+  },
+  "dep": "IT",
+  "email": "adham@gmail.com",
+  "phone": "01007810036",
+  "pic": "/uploads/1748192011072.png",
+  "username": "adham"
+}

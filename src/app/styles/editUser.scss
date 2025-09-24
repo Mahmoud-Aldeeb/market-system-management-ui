@@ -1,0 +1,44 @@
+@use "./main.scss" as *;
+.edit-user {
+  width: 100%;
+  height: calc(100vh - 60px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  form {
+    width: 320px;
+    margin-block: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    .form-div {
+      .select {
+        width: 100%;
+        padding: 0.5rem 1rem;
+        font-size: 1.2rem;
+        outline: none;
+        border: 2px solid $border-color;
+        border-radius: 0.5rem;
+        &:focus {
+          color: $main-color;
+          border-color: $main-color;
+        }
+      }
+      button {
+        width: 100%;
+        background-color: $background-color;
+        color: $main-color;
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        font-weight: bold;
+        font-size: 18px;
+        border: 2px solid $main-color;
+        border-radius: 0.5rem;
+        &:hover {
+          background-color: $main-color;
+          color: $background-color;
+        }
+      }
+    }
+  }
+}

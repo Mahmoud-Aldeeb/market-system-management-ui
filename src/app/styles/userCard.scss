@@ -1,0 +1,15 @@
+@use "./main.scss" as *;
+.user-card {
+  width: 300px;
+  padding: 0.5rem 1rem;
+  border: 2px solid $border-color;
+  border-radius: 0.5rem;
+  margin-block: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  img {
+    width: 100px;
+    height: 100px;
+  }
+}
